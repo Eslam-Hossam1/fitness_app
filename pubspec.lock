@@ -280,14 +280,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2"
-  hydrated:
-    dependency: "direct main"
-    description:
-      name: hydrated
-      sha256: "2ca3ecc3294103aba21d7e3d5b0eb449c7b2ca393b012de6ce80818c7c4babe6"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.0"
   hydrated_bloc:
     dependency: "direct main"
     description:
