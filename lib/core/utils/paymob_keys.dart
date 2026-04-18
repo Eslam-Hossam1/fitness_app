@@ -1,0 +1,3 @@
+class PaymobKeys {
+  static const String apiKey = "ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TVRFMU16a3hNQ3dpYm1GdFpTSTZJbWx1YVhScFlXd2lmUS5Udlg5S2t3SWV5WjRkTUdadXo5dC1xYUdGakJxckxwR2JjcWRuRW5KajdRNEpQZ0lTQ2ZwSGZlaFlyel9BVlFyTndWcTZwS3pVVVh5eVE2SkxxT09KUQ==";
+}
