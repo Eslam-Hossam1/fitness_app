@@ -13,7 +13,7 @@ class FitnessApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => ThemeCubit(),
       child: BlocBuilder<ThemeCubit, ThemeMode>(
-        builder: (context, mode) {
+        builder: (context, mode) { 
           return ScreenUtilInit(
             designSize: const Size(375, 812),
             minTextAdapt: true,
