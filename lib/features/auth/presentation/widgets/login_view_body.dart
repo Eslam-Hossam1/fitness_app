@@ -1,5 +1,5 @@
 import 'package:fitness_app/core/routing/routes_paths.dart';
-import 'package:fitness_app/core/services/auth_servise/supabase_auth_servise.dart';
+import 'package:fitness_app/core/services/auth_service/supabase_auth_service.dart';
 import 'package:fitness_app/core/theme/app_colors.dart';
 import 'package:fitness_app/core/theme/app_text_styles.dart';
 import 'package:fitness_app/core/utils/assets.dart';
@@ -17,7 +17,7 @@ class LoginViewBody extends StatefulWidget {
 }
 
 class _LoginViewBodyState extends State<LoginViewBody> {
-  final SupabaseAuthServise supabaseAuthServise = SupabaseAuthServise();
+  final SupabaseAuthService supabaseAuthServise = SupabaseAuthService();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.onUserInteraction;
   late String email, password;

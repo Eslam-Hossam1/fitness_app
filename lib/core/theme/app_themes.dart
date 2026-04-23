@@ -15,7 +15,7 @@ abstract class AppThemes {
       scaffoldBackgroundColor: AppColors.lightScaffoldBackground,
       primaryColor: AppColors.lightPrimary,
       dialogBackgroundColor: AppColors.lightDialogBackground,
-      
+
       // -- Color Scheme --
       colorScheme: const ColorScheme.light(
         primary: AppColors.lightPrimary,
@@ -32,7 +32,8 @@ abstract class AppThemes {
           secondaryTextColor: AppColors.lightSecondaryTextColor,
           formColor: AppColors.lightFormColor,
           toastColor: AppColors.lightToastBackground,
-          cachedNetworkImagePlaceholderColor: AppColors.lightCachedNetworkImagePlacholderColor,
+          cachedNetworkImagePlaceholderColor:
+              AppColors.lightCachedNetworkImagePlaceholderColor,
         ),
       ],
 
@@ -42,7 +43,9 @@ abstract class AppThemes {
           backgroundColor: AppColors.lightPrimary,
           foregroundColor: Colors.white,
           minimumSize: const Size(double.infinity, 56),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
           elevation: 0,
         ),
       ),
@@ -50,7 +53,10 @@ abstract class AppThemes {
         filled: true,
         fillColor: AppColors.lightFormColor,
         hintStyle: const TextStyle(color: AppColors.lightSecondaryTextColor),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 18,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(color: AppColors.lightOutline),
@@ -61,7 +67,10 @@ abstract class AppThemes {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.lightPrimary, width: 1.5),
+          borderSide: const BorderSide(
+            color: AppColors.lightPrimary,
+            width: 1.5,
+          ),
         ),
         prefixIconColor: AppColors.lightSecondaryTextColor,
         suffixIconColor: AppColors.lightSecondaryTextColor,
@@ -84,7 +93,7 @@ abstract class AppThemes {
       colorScheme: const ColorScheme.dark(
         primary: AppColors.darkPrimary,
         secondary: AppColors.darkSecondary,
-        surface: AppColors.darkSurface, 
+        surface: AppColors.darkSurface,
         onSurfaceVariant: AppColors.darkOnSurfaceVariant,
         outline: AppColors.darkOutline,
       ),
@@ -96,7 +105,8 @@ abstract class AppThemes {
           secondaryTextColor: AppColors.darkSecondaryTextColor,
           formColor: AppColors.darkFormColor,
           toastColor: AppColors.darkToastBackground,
-          cachedNetworkImagePlaceholderColor: AppColors.darkCachedNetworkImagePlacholderColor,
+          cachedNetworkImagePlaceholderColor:
+              AppColors.darkCachedNetworkImagePlaceholderColor,
         ),
       ],
 
@@ -106,7 +116,9 @@ abstract class AppThemes {
           backgroundColor: AppColors.darkPrimary,
           foregroundColor: AppColors.darkMainTextColor,
           minimumSize: const Size(double.infinity, 56),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
           elevation: 0,
         ),
       ),
@@ -114,7 +126,10 @@ abstract class AppThemes {
         filled: true,
         fillColor: AppColors.darkFormColor,
         hintStyle: const TextStyle(color: AppColors.darkSecondaryTextColor),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 18,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(color: AppColors.darkOutline),
@@ -125,7 +140,10 @@ abstract class AppThemes {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.darkPrimary, width: 1.5),
+          borderSide: const BorderSide(
+            color: AppColors.darkPrimary,
+            width: 1.5,
+          ),
         ),
         prefixIconColor: AppColors.darkSecondaryTextColor,
         suffixIconColor: AppColors.darkSecondaryTextColor,

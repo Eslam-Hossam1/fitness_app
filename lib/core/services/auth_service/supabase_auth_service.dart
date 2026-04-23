@@ -3,7 +3,7 @@ import 'package:fitness_app/features/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class SupabaseAuthServise {
+class SupabaseAuthService {
   final SupabaseClient supabaseClient = Supabase.instance.client;
   Future<AuthResponse> signInWithEmailPassword({
     required String email,
@@ -30,7 +30,7 @@ class AuthLogInManager extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Scaffold(body: Center(child: CircularProgressIndicator()));
         }
-        // checking in authntication
+        // checking in authentication
         final session = snapshot.hasData ? snapshot.data!.session : null;
         if (session != null) {
           // conflict add home view name

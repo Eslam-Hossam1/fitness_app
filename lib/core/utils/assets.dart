@@ -1,30 +1,37 @@
 // ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
-  
+
   /// Assets for imagesPngsAppLogo
   /// assets/images/pngs/app_logo.png
   static const String imagesPngsAppLogo = "assets/images/pngs/app_logo.png";
 
   /// Assets for imagesPngsImagePlaceholder
   /// assets/images/pngs/image_placeholder.png
-  static const String imagesPngsImagePlaceholder = "assets/images/pngs/image_placeholder.png";
+  static const String imagesPngsImagePlaceholder =
+      "assets/images/pngs/image_placeholder.png";
 
   /// Assets for imagesPngsLoginBody
   /// assets/images/pngs/login_body.png
   static const String imagesPngsLoginBody = "assets/images/pngs/login_body.png";
 
+  // Sign-Up Background in Upper Part.
+  static const String imagesPngsSignUp = 'assets/images/pngs/gym.png';
+
   /// Assets for imagesPngsOnboardingManRunning
   /// assets/images/pngs/onboarding_man_running.png
-  static const String imagesPngsOnboardingManRunning = "assets/images/pngs/onboarding_man_running.png";
+  static const String imagesPngsOnboardingManRunning =
+      "assets/images/pngs/onboarding_man_running.png";
 
   /// Assets for imagesPngsSplashDumble
   /// assets/images/pngs/splash_dumble.png
-  static const String imagesPngsSplashDumble = "assets/images/pngs/splash_dumble.png";
+  static const String imagesPngsSplashDumble =
+      "assets/images/pngs/splash_dumble.png";
 
   /// Assets for imagesPngsSplashTreadmill
   /// assets/images/pngs/splash_Treadmill.png
-  static const String imagesPngsSplashTreadmill = "assets/images/pngs/splash_Treadmill.png";
+  static const String imagesPngsSplashTreadmill =
+      "assets/images/pngs/splash_Treadmill.png";
 
   /// Assets for imagesSvgsBell
   /// assets/images/svgs/bell.svg
@@ -36,7 +43,8 @@ class Assets {
 
   /// Assets for imagesSvgsDumbleIcon
   /// assets/images/svgs/dumble_icon.svg
-  static const String imagesSvgsDumbleIcon = "assets/images/svgs/dumble_icon.svg";
+  static const String imagesSvgsDumbleIcon =
+      "assets/images/svgs/dumble_icon.svg";
 
   /// Assets for imagesSvgsElectric
   /// assets/images/svgs/electric.svg
@@ -78,4 +86,3 @@ class Assets {
   /// assets/images/svgs/profile.svg
   static const String imagesSvgsProfile = "assets/images/svgs/profile.svg";
 }
-
