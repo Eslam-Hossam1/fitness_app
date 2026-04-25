@@ -16,7 +16,7 @@ class PlanInfo extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          BadgeAndFavorite(level: plan.level),
+          BadgeAndFavorite(plan: plan),
           const SizedBox(height: 8),
           PlanTitle(name: plan.name),
           const SizedBox(height: 4),
