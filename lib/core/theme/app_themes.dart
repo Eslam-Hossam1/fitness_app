@@ -14,7 +14,6 @@ abstract class AppThemes {
       fontFamily: fontFamily,
       scaffoldBackgroundColor: AppColors.lightScaffoldBackground,
       primaryColor: AppColors.lightPrimary,
-      dialogBackgroundColor: AppColors.lightDialogBackground,
 
       // -- Color Scheme --
       colorScheme: const ColorScheme.light(
@@ -33,7 +32,7 @@ abstract class AppThemes {
           formColor: AppColors.lightFormColor,
           toastColor: AppColors.lightToastBackground,
           cachedNetworkImagePlaceholderColor:
-              AppColors.lightCachedNetworkImagePlaceholderColor,
+              AppColors.lightCachedNetworkImagePlacholderColor,
         ),
       ],
 
@@ -75,6 +74,9 @@ abstract class AppThemes {
         prefixIconColor: AppColors.lightSecondaryTextColor,
         suffixIconColor: AppColors.lightSecondaryTextColor,
       ),
+      dialogTheme: DialogThemeData(
+        backgroundColor: AppColors.lightDialogBackground,
+      ),
     );
   }
 
@@ -87,7 +89,6 @@ abstract class AppThemes {
       fontFamily: fontFamily,
       scaffoldBackgroundColor: AppColors.darkScaffoldBackground,
       primaryColor: AppColors.darkPrimary,
-      dialogBackgroundColor: AppColors.darkDialogBackground,
 
       // -- Color Scheme --
       colorScheme: const ColorScheme.dark(
@@ -106,7 +107,7 @@ abstract class AppThemes {
           formColor: AppColors.darkFormColor,
           toastColor: AppColors.darkToastBackground,
           cachedNetworkImagePlaceholderColor:
-              AppColors.darkCachedNetworkImagePlaceholderColor,
+              AppColors.darkCachedNetworkImagePlacholderColor,
         ),
       ],
 
@@ -147,6 +148,9 @@ abstract class AppThemes {
         ),
         prefixIconColor: AppColors.darkSecondaryTextColor,
         suffixIconColor: AppColors.darkSecondaryTextColor,
+      ),
+      dialogTheme: DialogThemeData(
+        backgroundColor: AppColors.darkDialogBackground,
       ),
     );
   }
