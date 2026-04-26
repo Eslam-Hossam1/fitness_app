@@ -20,7 +20,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   final SupabaseAuthService supabaseAuthServise = SupabaseAuthService();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.onUserInteraction;
-  late String email, password;
+  String email = '';
+  String password = '';
   void executeLogin() async {
     try {
       await supabaseAuthServise.signInWithEmailPassword(
@@ -76,7 +77,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     }
                     return null;
                   },
-                  prefixIcon: Icon(Icons.email_outlined),
+                  prefixIcon: Transform.scale(
+                    scale: 1.3,
+                    child: Icon(Icons.email_outlined),
+                  ),
                   title: 'Email Address',
                   hint: 'Enter your email',
                   onSaved: (value) {
@@ -135,7 +139,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Do not have an account',
+                      'Do not have an account?',
                       style: AppTextStyles.regular14(
                         context,
                       ).copyWith(color: AppColors.darkSurface),
@@ -145,7 +149,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                         context.go(RoutePaths.signUp);
                       },
                       child: Text(
-                        'SignUp?',
+                        '  SignUp',
                         style: AppTextStyles.bold14(
                           context,
                         ).copyWith(color: AppColors.darkPrimary),

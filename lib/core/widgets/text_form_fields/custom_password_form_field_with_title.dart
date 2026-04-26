@@ -39,10 +39,13 @@ class CustomPasswordTextFormFieldWithTitle extends StatelessWidget {
           validator: validator ?? FormValidators.passwordValidator,
           onSaved: onSaved,
           onChanged: onChanged,
-          prefixIcon: SvgPicture.asset(
-            Assets.imagesSvgsLock,
-            fit: BoxFit.contain,
-            width: 16.w(context),
+          prefixIcon: Transform.scale(
+            scale: 0.7,
+            child: SvgPicture.asset(
+              Assets.imagesSvgsLock,
+              fit: BoxFit.contain,
+              width: 16.w(context),
+            ),
           ),
         ),
       ],

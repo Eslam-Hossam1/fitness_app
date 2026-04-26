@@ -22,7 +22,7 @@ class MainView extends StatelessWidget {
     return Scaffold(
       body: navigationShell,
       bottomNavigationBar: Container(
-        height: 72,
+        height: 85,
         decoration: BoxDecoration(
           color: context.scaffoldBackgroundColor,
           border: Border(

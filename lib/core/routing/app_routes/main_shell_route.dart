@@ -1,3 +1,4 @@
+import 'package:fitness_app/features/plans/presentation/views/plans_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -47,7 +48,7 @@ class MainShellRoute {
         routes: [
           GoRoute(
             path: RoutePaths.plans,
-            builder: (context, state) => const CustomScreenPlaceholder(text: 'Plans Screen'),
+            builder: (context, state) => PlansView(),
           ),
         ],
       ),

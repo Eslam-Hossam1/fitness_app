@@ -1,6 +1,7 @@
+import 'package:fitness_app/core/routing/routes_paths.dart';
 import 'package:fitness_app/features/auth/presentation/widgets/login_view_body.dart';
-import 'package:fitness_app/features/home_view.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseAuthService {
@@ -34,7 +35,10 @@ class AuthLogInManager extends StatelessWidget {
         final session = snapshot.hasData ? snapshot.data!.session : null;
         if (session != null) {
           // conflict add home view name
-          return HomeView();
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            context.go(RoutePaths.home);
+          });
+          return Scaffold(body: Center(child: CircularProgressIndicator()));
         } else {
           return LoginViewBody();
         }
