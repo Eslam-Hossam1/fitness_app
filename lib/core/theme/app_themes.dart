@@ -32,7 +32,7 @@ abstract class AppThemes {
           formColor: AppColors.lightFormColor,
           toastColor: AppColors.lightToastBackground,
           cachedNetworkImagePlaceholderColor:
-              AppColors.lightCachedNetworkImagePlacholderColor,
+              AppColors.lightCachedNetworkImagePlaceholderColor,
         ),
       ],
 
@@ -107,7 +107,7 @@ abstract class AppThemes {
           formColor: AppColors.darkFormColor,
           toastColor: AppColors.darkToastBackground,
           cachedNetworkImagePlaceholderColor:
-              AppColors.darkCachedNetworkImagePlacholderColor,
+              AppColors.darkCachedNetworkImagePlaceholderColor,
         ),
       ],
 

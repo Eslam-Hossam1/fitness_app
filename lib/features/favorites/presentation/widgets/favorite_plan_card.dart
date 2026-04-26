@@ -44,9 +44,9 @@ class FavoritePlanCard extends StatelessWidget {
                     Expanded(
                       child: Text(
                         plan.title,
-                        style: AppTextStyles.bold18(context).copyWith(
-                          color: Colors.white,
-                        ),
+                        style: AppTextStyles.bold18(
+                          context,
+                        ).copyWith(color: Colors.white),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -57,9 +57,9 @@ class FavoritePlanCard extends StatelessWidget {
                 SizedBox(height: 4.h(context)),
                 Text(
                   plan.description,
-                  style: AppTextStyles.regular13(context).copyWith(
-                    color: context.secondaryTextColor,
-                  ),
+                  style: AppTextStyles.regular13(
+                    context,
+                  ).copyWith(color: context.secondaryTextColor),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -87,7 +87,11 @@ class FavoritePlanCard extends StatelessWidget {
     );
   }
 
-  Widget _buildInfoItem(BuildContext context, {required String icon, required String label}) {
+  Widget _buildInfoItem(
+    BuildContext context, {
+    required String icon,
+    required String label,
+  }) {
     return Row(
       children: [
         SvgPicture.asset(
@@ -102,9 +106,9 @@ class FavoritePlanCard extends StatelessWidget {
         SizedBox(width: 4.w(context)),
         Text(
           label,
-          style: AppTextStyles.medium12(context).copyWith(
-            color: context.secondaryTextColor,
-          ),
+          style: AppTextStyles.medium12(
+            context,
+          ).copyWith(color: context.secondaryTextColor),
         ),
       ],
     );

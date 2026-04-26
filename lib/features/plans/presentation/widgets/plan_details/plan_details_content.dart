@@ -1,3 +1,5 @@
+import 'package:fitness_app/features/favorites/data/models/favorite_plan_model.dart';
+import 'package:fitness_app/features/favorites/presentation/widgets/favorite_toggle_button.dart';
 import 'package:fitness_app/features/plans/data/models/plan_details_model.dart';
 import 'package:fitness_app/features/plans/presentation/widgets/plan_details/chip_and_stat_item.dart';
 import 'package:fitness_app/features/plans/presentation/widgets/plan_details/day_card.dart';
@@ -36,25 +38,39 @@ class _PlanDetailsContentState extends State<PlanDetailsContent> {
           ),
           title: const Text('Plan Details'),
           centerTitle: true,
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.favorite_border, color: Colors.blue),
-              onPressed: () {},
-            ),
-          ],
+          actions: const [],
           flexibleSpace: FlexibleSpaceBar(
-            collapseMode: CollapseMode.pin,
-            background: Image.network(
-              plan.image,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) => Container(
-                color: const Color(0xFF1E1E2E),
-                child: Icon(
-                  Icons.image_not_supported_outlined,
-                  color: Colors.grey,
-                  size: 40,
+            collapseMode: CollapseMode.parallax,
+            background: Stack(
+              fit: StackFit.expand,
+              children: [
+                Image.network(
+                  plan.image,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) => Container(
+                    color: const Color(0xFF1E1E2E),
+                    child: const Icon(
+                      Icons.image_not_supported_outlined,
+                      color: Colors.grey,
+                      size: 40,
+                    ),
+                  ),
                 ),
-              ),
+                const DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: [0.0, 0.3, 1.0],
+                      colors: [
+                        Colors.black87,
+                        Colors.transparent,
+                        Colors.black87,
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
@@ -71,6 +87,17 @@ class _PlanDetailsContentState extends State<PlanDetailsContent> {
                     Chip(
                       label: '${plan.durationWeeks} WEEKS',
                       color: const Color(0xFF1E1E2E),
+                    ),
+                    const Spacer(),
+                    FavoriteToggleButton(
+                      plan: FavoritePlanModel(
+                        id: plan.id,
+                        title: plan.name,
+                        description: plan.description,
+                        duration: '${plan.durationWeeks} Weeks',
+                        level: plan.level,
+                        image: plan.image,
+                      ),
                     ),
                   ],
                 ),

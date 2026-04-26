@@ -42,23 +42,30 @@ class StatItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 115.h,
-      width: 110.w,
-      padding:  EdgeInsets.all(16.dg),
+      padding: EdgeInsets.all(16.dg),
       decoration: BoxDecoration(
         color: const Color(0xFF1E1E2E),
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, color: Colors.blue, size: 22),
+          Icon(icon, color: Colors.blue, size: 22.sp),
           SizedBox(height: 8.h),
-          Text(label, style: TextStyle(color: Colors.grey, fontSize: 12.sp)),
-          SizedBox(height: 4.h),
           Text(
-            value,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
+            label,
+            style: TextStyle(color: Colors.grey, fontSize: 12.sp),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          SizedBox(height: 4.h),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              value,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
+            ),
           ),
         ],
       ),
