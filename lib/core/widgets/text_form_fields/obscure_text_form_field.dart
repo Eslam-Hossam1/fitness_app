@@ -81,15 +81,15 @@ class _ObscureTextFormFieldState extends State<ObscureTextFormField> {
           child: IconButton(
             onPressed: toggleObscure,
             icon: isObscure
-                ? SvgPicture.asset(
-                    Assets.imagesSvgsEye,
-                    fit: BoxFit.contain,
-                    width: 24.w(context),
-                  )
-                : Icon(
+                ? Icon(
                     Icons.visibility_off,
                     color: context.mainTextColor,
-                    size: 24,
+                    size: 22,
+                  )
+                : SvgPicture.asset(
+                    Assets.imagesSvgsEye,
+                    fit: BoxFit.contain,
+                    width: 22.w(context),
                   ),
           ),
         ),

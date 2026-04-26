@@ -4,8 +4,8 @@ import 'package:fitness_app/core/theme/app_text_styles.dart';
 import 'package:fitness_app/core/theme/theme_colors_extension.dart';
 import 'package:fitness_app/core/utils/assets.dart';
 
-class CustomHomeAppBar extends StatelessWidget {
-  const CustomHomeAppBar({super.key});
+class CustomAppBar extends StatelessWidget {
+  const CustomAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {

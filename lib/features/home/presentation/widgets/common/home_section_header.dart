@@ -3,9 +3,10 @@ import 'package:fitness_app/core/theme/app_text_styles.dart';
 import 'package:fitness_app/core/theme/theme_colors_extension.dart';
 
 class HomeSectionHeader extends StatelessWidget {
-  const HomeSectionHeader({super.key, required this.title});
+  const HomeSectionHeader({super.key, required this.title, this.onTap});
 
   final String title;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class HomeSectionHeader extends StatelessWidget {
             ).copyWith(color: context.mainTextColor),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: onTap,
             child: Text(
               'See All',
               style: AppTextStyles.medium14(

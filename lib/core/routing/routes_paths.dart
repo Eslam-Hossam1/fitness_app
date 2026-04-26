@@ -23,4 +23,5 @@ abstract class RoutePaths {
   static const categoryProducts = "/category_products";
   static const brandProducts = "/brand_products";
   static const productDetails = "/product_details";
+  static const planDetails = '/plan_details';
 }
