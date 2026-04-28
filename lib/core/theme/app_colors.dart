@@ -29,4 +29,5 @@ abstract class AppColors {
   static const Color darkFormColor = Color(0xFF17212E);
   static const Color darkToastBackground = Color(0xFF2E2E2E);
   static const Color darkCachedNetworkImagePlaceholderColor = Color(0xFF3A3A3A);
+  static const Color trackColor = Color(0xFF1E293B);
 }

@@ -1,103 +1,116 @@
+import 'package:fitness_app/core/di/service_locator.dart';
+import 'package:fitness_app/core/routing/routes_paths.dart';
+import 'package:fitness_app/core/services/storage_services/preferences/preferences_keys.dart';
+import 'package:fitness_app/core/services/storage_services/preferences/preferences_service.dart';
+import 'package:fitness_app/core/utils/assets.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../../core/extensions/responsive_extension.dart';
-import '../../../../core/services/storage_services/preferences/preferences_keys.dart';
-import '../../../../core/services/storage_services/preferences/preferences_service.dart';
-
-import '../../../auth/presentation/views/login_view.dart';
-
-class OnboardingView extends StatefulWidget {
+class OnboardingView extends StatelessWidget {
   const OnboardingView({super.key});
 
-  @override
-  State<OnboardingView> createState() => _OnboardingViewState();
-}
-
-class _OnboardingViewState extends State<OnboardingView> {
-  Future<void> finishOnboarding() async {
-    final prefs = await SharedPreferences.getInstance();
-    final service = PreferencesService(prefs);
+  void _finishOnboarding(BuildContext context) async {
+    final service = getIt<PreferencesService>();
 
     await service.setData(
       key: PreferencesKeys.onboardingCompleted,
       value: true,
     );
 
-    if (!mounted) return;
-
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (_) => const LoginView()),
-    );
+    if (context.mounted) {
+      context.go(RoutePaths.login);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    const Color darkBackground = Color(0xFF101922);
+    const Color primaryBlue = Color(0xFF3F80FF);
+
     return Scaffold(
-      backgroundColor: const Color(0xFF101922),
+      backgroundColor: darkBackground,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF101922),
-        leading: const Icon(Icons.clear_outlined, color: Colors.white),
+        backgroundColor: darkBackground,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.clear_outlined, color: Colors.white),
+          onPressed: () => _finishOnboarding(context),
+        ),
         title: const Text(
           'IronPulse',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
       body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Image.asset(
-              'assets/images/pngs/onboarding_man_running.png',
-              fit: BoxFit.fitWidth,
-            ),
-            SizedBox(height: 20.h(context)),
-            Text(
-              'Welcome to\nIronPulse',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 30.w(context),
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+            Expanded(
+              flex: 3,
+              child: Image.asset(
+                Assets.imagesPngsOnboardingManRunning, 
+                fit: BoxFit.contain,
+                width: double.infinity,
               ),
             ),
-            SizedBox(height: 15.h(context)),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
-              child: Text(
-                'Fuel your progress. Your journey to elite performance starts here.',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 18.w(context),
-                  color: Colors.white70,
+
+            Expanded(
+              flex: 2,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 20),
+                    const Text(
+                      'Welcome to\nIronPulse',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        height: 1.2,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    const Text(
+                      'Fuel your progress. Your journey to elite performance starts here.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.white70,
+                        height: 1.5,
+                      ),
+                    ),
+                    
+                    const Spacer(), 
+
+                    SizedBox(
+                      width: double.infinity,
+                      height: 60,
+                      child: ElevatedButton(
+                        onPressed: () => _finishOnboarding(context),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: primaryBlue,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          elevation: 0,
+                        ),
+                        child: const Text(
+                          'Get Started',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 40),
+                  ],
                 ),
               ),
             ),
-            const Spacer(),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
-              child: ElevatedButton(
-                onPressed: finishOnboarding,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF3F80FF),
-                  minimumSize: Size(double.infinity, 60.h(context)),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.r(context)),
-                  ),
-                  elevation: 0,
-                ),
-                child: Text(
-                  'Get Started',
-                  style: TextStyle(
-                    fontSize: 18.w(context),
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 50.h(context)),
           ],
         ),
       ),

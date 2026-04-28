@@ -2,6 +2,7 @@ abstract class RoutePaths {
   static const onboarding = "/onboarding";
   static const login = "/login";
   static const signUp = "/sign_up";
+  static const splash = "/splash";
   static const forgotPassword = "/forgot_password";
   static const resetPassword = "/reset_password";
   static const otp = "/otp";
