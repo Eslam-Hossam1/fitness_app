@@ -31,7 +31,6 @@ class FavoritesRemoteDataSourceImpl implements FavoritesRemoteDataSource {
   Future<void> addFavorite(int planId) async {
     // final userId = _client.auth.currentUser!.id;
     final userId = 'd66350d8-2eec-4ba0-bc72-3b8b2f7390f1';
-    if (userId == null) return;
 
     await _client.from('favourites').insert({
       'user_id': userId,
@@ -43,7 +42,6 @@ class FavoritesRemoteDataSourceImpl implements FavoritesRemoteDataSource {
   Future<void> removeFavorite(int planId) async {
     // final userId = _client.auth.currentUser!.id;
     final userId = 'd66350d8-2eec-4ba0-bc72-3b8b2f7390f1';
-    if (userId == null) return;
 
     await _client
         .from('favourites')

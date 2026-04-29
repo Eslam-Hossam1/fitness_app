@@ -2,8 +2,8 @@ import 'package:fitness_app/core/theme/app_colors.dart';
 import 'package:fitness_app/core/theme/app_text_styles.dart';
 import 'package:fitness_app/core/widgets/buttons/custom_button.dart';
 import 'package:fitness_app/core/widgets/text_form_fields/custom_text_form_field_with_title.dart';
-import 'package:fitness_app/features/profile/presentation/widgets/account_verification_box.dart';
-import 'package:fitness_app/features/profile/presentation/widgets/edit_profile_pic.dart';
+import 'package:fitness_app/features/profile/presentation/views/widgets/account_verification_box.dart';
+import 'package:fitness_app/features/profile/presentation/views/widgets/edit_profile_pic.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

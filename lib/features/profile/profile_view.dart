@@ -1,9 +1,9 @@
+import 'package:fitness_app/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
 import 'profile_controller.dart';
 import 'package:fitness_app/core/widgets/buttons/custom_button.dart';
-import 'package:lib/features/profile/presentation/views/edit_profile_view.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -71,7 +71,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       color: Color(0xff1877F2),
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(Icons.edit, size: 16, color: Colors.white),
+                    child: const Icon(
+                      Icons.edit,
+                      size: 16,
+                      color: Colors.white,
+                    ),
                   ),
                 ],
               ),
@@ -126,9 +130,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Text(
                 "Account Settings",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             const SizedBox(height: 15),
@@ -178,15 +183,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Text(
               title,
               style: TextStyle(
-                  color: Colors.grey.shade400, fontSize: 13, height: 1.2),
+                color: Colors.grey.shade400,
+                fontSize: 13,
+                height: 1.2,
+              ),
             ),
             const SizedBox(height: 8),
             Text(
               value,
               style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold),
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),
