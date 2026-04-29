@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'package:fitness_app/core/services/edit_image_profile_servise/upLoad_pic_to_subabase.dart';
 import 'package:fitness_app/core/theme/app_colors.dart';
 import 'package:fitness_app/core/theme/app_text_styles.dart';
 import 'package:fitness_app/core/widgets/buttons/custom_button.dart';
@@ -16,9 +18,9 @@ class EditProfileViewBody extends StatefulWidget {
 
 class _EditProfileViewBodyState extends State<EditProfileViewBody> {
   final nameController = TextEditingController();
-  AutovalidateMode autovalidateMode = AutovalidateMode.onUserInteraction;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   String originalName = "";
+  File? selectedImage;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,10 +28,14 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
       child: SingleChildScrollView(
         child: Form(
           key: formKey,
-          autovalidateMode: autovalidateMode,
           child: Column(
             children: [
-              EditProfilePic(),
+              EditProfilePic(
+                selectedImage: selectedImage,
+                onImageSelected: (File? image) {
+                  setState(() => selectedImage = image);
+                },
+              ),
               Text(
                 'Change Profile Picture',
                 style: AppTextStyles.medium14(
@@ -38,12 +44,6 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
               ),
               SizedBox(height: 40),
               CustomTextFormFieldWithTitle(
-                validator: (value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return "Name is required";
-                  }
-                  return null;
-                },
                 controller: nameController,
                 title: 'Full Name',
                 hint: 'Enter your name please',
@@ -57,7 +57,10 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
               CustomButton(
                 width: double.infinity,
                 onPressed: () async {
-                  await nameUpdateCheck(context);
+                  await upDateName(context);
+
+                  await upDateProfilePic(context);
+                  setState(() {});
                 },
                 child: Text(
                   'Save Changes',
@@ -73,6 +76,9 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                 onPressed: () {
                   nameController.text = originalName;
                   FocusScope.of(context).unfocus();
+                  setState(() {
+                    selectedImage = null;
+                  });
                 },
                 child: Text(
                   'Cancel Changes',
@@ -88,23 +94,40 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
     );
   }
 
-  Future<void> nameUpdateCheck(BuildContext context) async {
-    if (formKey.currentState!.validate()) {
-      final success = await updateDisplayName();
+  Future<void> upDateProfilePic(BuildContext context) async {
+    try {
+      if (selectedImage != null) {
+        await uploadImageToSupabase(selectedImage!);
 
-      if (success) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Profile picture updated successfully ✅")),
+        );
+        Future.delayed(Duration(seconds: 3), () {
+          Navigator.pop(context);
+        });
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Something went wrong ❌")));
+    }
+  }
+
+  Future<void> upDateName(BuildContext context) async {
+    try {
+      if (originalName != nameController.text.trim()) {
+        await updateDisplayName();
         ScaffoldMessenger.of(
           context,
         ).showSnackBar(SnackBar(content: Text("Name updated successfully ✅")));
-      } else {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text("Something went wrong ❌")));
+        Future.delayed(Duration(seconds: 3), () {
+          Navigator.pop(context);
+        });
       }
-    } else {
-      setState(() {
-        autovalidateMode = AutovalidateMode.onUserInteraction;
-      });
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Something went wrong ❌")));
     }
   }
 

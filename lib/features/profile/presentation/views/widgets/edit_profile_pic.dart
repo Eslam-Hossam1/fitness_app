@@ -1,19 +1,19 @@
 import 'dart:io';
-import 'package:fitness_app/core/services/edit_image_profile_servise/upLoad_pic_to_subabase.dart';
 import 'package:fitness_app/core/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-class EditProfilePic extends StatefulWidget {
-  const EditProfilePic({super.key});
+class EditProfilePic extends StatelessWidget {
+  final File? selectedImage;
+  final ValueChanged<File?> onImageSelected;
 
-  @override
-  State<EditProfilePic> createState() => _EditProfilePicState();
-}
+  const EditProfilePic({
+    super.key,
+    required this.selectedImage,
+    required this.onImageSelected,
+  });
 
-class _EditProfilePicState extends State<EditProfilePic> {
-  File? selectedImage;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -41,14 +41,8 @@ class _EditProfilePicState extends State<EditProfilePic> {
                       right: constraints.maxWidth * 0.02,
                       child: InkWell(
                         onTap: () async {
-                          selectedImage = await pickImageFromGallery();
-                          setState(() {});
-
-                          if (selectedImage != null) {
-                            final url = await uploadImageToSupabase(
-                              selectedImage!,
-                            );
-                          }
+                          final image = await pickImageFromGallery();
+                          onImageSelected(image);
                         },
                         child: CircleAvatar(
                           radius: iconRadius,

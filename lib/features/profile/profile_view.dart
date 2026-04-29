@@ -1,7 +1,9 @@
+import 'package:fitness_app/core/services/edit_image_profile_servise/get_image_url.dart';
 import 'package:fitness_app/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'profile_controller.dart';
 import 'package:fitness_app/core/widgets/buttons/custom_button.dart';
 
@@ -14,6 +16,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final controller = GetIt.instance<ProfileController>();
+  final user = Supabase.instance.client.auth.currentUser;
 
   @override
   void initState() {
@@ -50,19 +53,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Stack(
                 alignment: Alignment.bottomRight,
                 children: [
-                  Container(
-                    width: 110,
-                    height: 110,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xff151F29),
-                    ),
-                    child: ClipOval(
-                      child: SvgPicture.asset(
-                        'assets/images/svgs/profile.svg',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                  // profile image from supabase;
+                  StreamBuilder<String?>(
+                    stream: getProfileImageStream(user!.id),
+                    builder: (context, snapshot) {
+                      final imageUrl = snapshot.data;
+                      if (imageUrl == null) {
+                        return Container(
+                          width: 120,
+                          height: 120,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xff151F29),
+                          ),
+                          child: ClipOval(
+                            child: SvgPicture.asset(
+                              'assets/images/svgs/profile.svg',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        );
+                      }
+                      return Container(
+                        width: 120,
+                        height: 120,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: const Color(0xff151F29),
+                          image: DecorationImage(
+                            image: NetworkImage(snapshot.data!),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      );
+                    },
                   ),
                   Container(
                     height: 30,

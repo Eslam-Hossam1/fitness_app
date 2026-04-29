@@ -6,6 +6,8 @@ import 'package:fitness_app/features/home/data/datasources/home_remote_data_sour
 import 'package:fitness_app/features/home/data/datasources/home_remote_data_source/home_remote_data_source_impl.dart';
 import 'package:fitness_app/features/home/data/repos/featured_plans_repo.dart';
 import 'package:fitness_app/features/home/data/repos/featured_plans_repo_impl.dart';
+import 'package:fitness_app/features/profile/profile_controller.dart';
+import 'package:fitness_app/features/profile/profile_service.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,6 +22,7 @@ Future<void> setupServiceLocator() async {
   await _setupCaching();
   _setupHome();
   _setupFavorites();
+  _setupProfile();
 }
 
 void _setupHome() {
@@ -46,7 +49,19 @@ void _setupFavorites() {
   );
 
   // Cubits
-  getIt.registerLazySingleton(() => FavoritesCubit(getIt<FavoritesRepository>()));
+  getIt.registerLazySingleton(
+    () => FavoritesCubit(getIt<FavoritesRepository>()),
+  );
+}
+
+void _setupProfile() {
+  // Services
+  getIt.registerSingleton<ProfileService>(ProfileService());
+
+  // Controllers
+  getIt.registerSingleton<ProfileController>(
+    ProfileController(getIt<ProfileService>()),
+  );
 }
 
 Future<void> _setupCaching() async {

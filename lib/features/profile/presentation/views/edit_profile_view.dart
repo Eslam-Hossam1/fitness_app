@@ -10,7 +10,7 @@ class EditProfileView extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            //    Navigator.pop(context);
+            Navigator.pop(context);
           },
           icon: Icon(Icons.arrow_back),
         ),
