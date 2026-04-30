@@ -1,12 +1,13 @@
 import 'package:fitness_app/features/plans/presentation/views/plans_view.dart';
 import 'package:fitness_app/features/profile/profile_view.dart';
+import 'package:fitness_app/features/trainers/presentation/manager/trainers_cubit/trainers_cubit.dart';
+import 'package:fitness_app/features/trainers/presentation/views/trainers_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fitness_app/core/routing/routes_paths.dart';
 import 'package:fitness_app/features/main/presentation/views/main_view.dart';
 import 'package:fitness_app/features/home/presentation/views/home_view.dart';
-import 'package:fitness_app/core/widgets/custom_screen_placeholder.dart';
 import 'package:fitness_app/features/home/presentation/manager/featured_plans_cubit/featured_plans_cubit.dart';
 import 'package:fitness_app/features/favorites/presentation/manager/favorites_cubit/favorites_cubit.dart';
 import 'package:fitness_app/features/favorites/presentation/views/favorites_view.dart';
@@ -52,8 +53,10 @@ class MainShellRoute {
         routes: [
           GoRoute(
             path: RoutePaths.trainers,
-            builder: (context, state) =>
-                const CustomScreenPlaceholder(text: 'Trainers Screen'),
+            builder: (context, state) => BlocProvider(
+              create: (context) => getIt<TrainersCubit>()..getTrainers(),
+              child: const TrainersView(),
+            ),
           ),
         ],
       ),

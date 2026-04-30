@@ -8,6 +8,10 @@ import 'package:fitness_app/features/home/data/repos/featured_plans_repo.dart';
 import 'package:fitness_app/features/home/data/repos/featured_plans_repo_impl.dart';
 import 'package:fitness_app/features/profile/profile_controller.dart';
 import 'package:fitness_app/features/profile/profile_service.dart';
+import 'package:fitness_app/features/trainers/data/datasources/trainers_remote_data_source.dart';
+import 'package:fitness_app/features/trainers/data/repos/trainers_repo.dart';
+import 'package:fitness_app/features/trainers/data/repos/trainers_repo_impl.dart';
+import 'package:fitness_app/features/trainers/presentation/manager/trainers_cubit/trainers_cubit.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,6 +27,7 @@ Future<void> setupServiceLocator() async {
   _setupHome();
   _setupFavorites();
   _setupProfile();
+  _setupTrainers();
 }
 
 void _setupHome() {
@@ -61,6 +66,25 @@ void _setupProfile() {
   // Controllers
   getIt.registerSingleton<ProfileController>(
     ProfileController(getIt<ProfileService>()),
+  );
+}
+
+void _setupTrainers() {
+  final supabaseClient = Supabase.instance.client;
+
+  // Data Sources
+  getIt.registerLazySingleton<TrainersRemoteDataSource>(
+    () => TrainersRemoteDataSourceImpl(supabaseClient),
+  );
+
+  // Repositories
+  getIt.registerLazySingleton<TrainersRepo>(
+    () => TrainersRepoImpl(getIt<TrainersRemoteDataSource>()),
+  );
+
+  // Cubits
+  getIt.registerFactory<TrainersCubit>(
+    () => TrainersCubit(getIt<TrainersRepo>()),
   );
 }
 
