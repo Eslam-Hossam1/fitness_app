@@ -51,7 +51,7 @@ class DayCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Icon(
+                  Icon(
                     isExpanded
                         ? Icons.keyboard_arrow_down
                         : Icons.keyboard_arrow_right,

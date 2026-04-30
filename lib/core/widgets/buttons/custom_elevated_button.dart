@@ -41,10 +41,10 @@ class CustomElevatedButton extends StatelessWidget {
           backgroundColor: backgroundColor ?? Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(threeRadius ?? 15).r(context),
-              topRight: Radius.circular(threeRadius ?? 15).r(context),
-              bottomRight: Radius.circular(threeRadius ?? 15).r(context),
-              bottomLeft: Radius.circular(lastRadius ?? 15).r(context),
+              topLeft: Radius.circular((threeRadius ?? 15).r(context)),
+              topRight: Radius.circular((threeRadius ?? 15).r(context)),
+              bottomRight: Radius.circular((threeRadius ?? 15).r(context)),
+              bottomLeft: Radius.circular((lastRadius ?? 15).r(context)),
             ),
           ),
         ),
