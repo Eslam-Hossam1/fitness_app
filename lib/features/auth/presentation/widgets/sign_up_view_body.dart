@@ -7,7 +7,8 @@ import 'package:fitness_app/core/widgets/toast/show_toast.dart';
 import 'package:fitness_app/features/auth/presentation/view_model/sign_up_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fitness_app/core/extensions/responsive_extension.dart';
+import 'package:fitness_app/core/theme/app_text_styles.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
@@ -42,38 +43,38 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
         backgroundColor: Colors.transparent,
         title: Text(
           'IronPulse',
-          style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold),
+          style: AppTextStyles.bold22(context, color: Colors.white),
         ),
         centerTitle: true,
         leading: BackButton(onPressed: () => context.go(RoutePaths.login)),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8.w),
+        padding: EdgeInsets.symmetric(horizontal: 8.w(context)),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SignUpUpperPart(),
+              const SignUpUpperPart(),
               Form(
                 key: _formKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    textFieldTitle(text: ' Full Name'),
+                    textFieldTitle(text: ' Full Name', context: context),
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10.h),
+                      padding: EdgeInsets.symmetric(vertical: 10.h(context)),
                       child: CustomTextForm(
                         controller: _nameController,
                         keyboardType: TextInputType.name,
                         hintText: 'Enter your Name',
                       ),
                     ),
-                    textFieldTitle(text: ' Email Address'),
+                    textFieldTitle(text: ' Email Address', context: context),
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10.h),
+                      padding: EdgeInsets.symmetric(vertical: 10.h(context)),
                       child: CustomTextForm(
                         controller: _emailController,
-                        keyboardType: TextInputType.name,
+                        keyboardType: TextInputType.emailAddress,
                         hintText: 'Enter your Email',
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -85,9 +86,9 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                         },
                       ),
                     ),
-                    textFieldTitle(text: ' Password'),
+                    textFieldTitle(text: ' Password', context: context),
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10.h),
+                      padding: EdgeInsets.symmetric(vertical: 10.h(context)),
                       child: CustomTextForm(
                         controller: _passwordController,
                         keyboardType: TextInputType.visiblePassword,
@@ -118,14 +119,14 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                   ],
                 ),
               ),
-              SizedBox(height: 10.h),
+              SizedBox(height: 10.h(context)),
               BlocConsumer<SignUpCubit, SignUpState>(
                 listener: (context, state) {
                   if (state is SignUpSuccess) {
                     context.go(RoutePaths.login);
-                    ShowToast.showToastSuccessTop(message: 'Account Created');
+                    ShowToast.showToastSuccessTop(context: context, message: 'Account Created');
                   } else if (state is SignUpFailure) {
-                    ShowToast.showToastErrorTop(message: state.message);
+                    ShowToast.showToastErrorTop(context: context, message: state.message);
                   }
                 },
                 builder: (context, state) {
@@ -145,21 +146,21 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                           },
                     text: isLoading ? 'Loading...' : 'Create Account',
                     width: double.infinity,
-                    height: 50.h,
+                    height: 50.h(context),
                     backgroundColor: isLoading
-                        ? Colors.grey.withValues(alpha: 0.5)
-                        : Color(0xFF0D7FF2),
+                        ? Colors.grey.withOpacity(0.5)
+                        : const Color(0xFF0D7FF2),
                     textColor: Colors.white,
                     // isLoading: state is SignUpLoading,
                   );
                 },
               ),
-              SizedBox(height: 15.h),
-              DividerOR(),
-              SizedBox(height: 10.h),
-              SignUpWithGoogle(),
-              SizedBox(height: 10.h),
-              HaveAnAccount(),
+              SizedBox(height: 15.h(context)),
+              const DividerOR(),
+              SizedBox(height: 10.h(context)),
+              const SignUpWithGoogle(),
+              SizedBox(height: 10.h(context)),
+              const HaveAnAccount(),
             ],
           ),
         ),
@@ -167,16 +168,12 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
     );
   }
 
-  Padding textFieldTitle({required String text}) {
+  Padding textFieldTitle({required String text, required BuildContext context}) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 2.h, top: 5.h),
+      padding: EdgeInsets.only(bottom: 2.h(context), top: 5.h(context)),
       child: Text(
         text,
-        style: TextStyle(
-          fontSize: 14.sp,
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-        ),
+        style: AppTextStyles.bold14(context, color: Colors.white),
       ),
     );
   }
@@ -189,13 +186,13 @@ class SignUpWithGoogle extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 55.h,
+      height: 55.h(context),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(0xFF1E2A3A),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
-            side: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
+            side: BorderSide(color: Colors.white.withOpacity(0.2)),
           ),
         ),
         onPressed: () {},
@@ -204,17 +201,13 @@ class SignUpWithGoogle extends StatelessWidget {
           children: [
             SvgPicture.asset(
               Assets.imagesSvgsGoogle,
-              width: 24.w,
-              height: 24.h,
+              width: 24.w(context),
+              height: 24.h(context),
             ),
-            SizedBox(width: 10.w),
+            SizedBox(width: 10.w(context)),
             Text(
               'Sign up with Google',
-              style: TextStyle(
-                fontSize: 16.sp,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+              style: AppTextStyles.bold16(context, color: Colors.white),
             ),
           ],
         ),
@@ -233,17 +226,13 @@ class HaveAnAccount extends StatelessWidget {
       children: [
         Text(
           'Already have an account? ',
-          style: TextStyle(fontSize: 14.sp, color: Colors.white54),
+          style: AppTextStyles.regular14(context, color: Colors.white54),
         ),
         GestureDetector(
           onTap: () => context.go(RoutePaths.login),
           child: Text(
             'Log in',
-            style: TextStyle(
-              fontSize: 14.sp,
-              color: const Color(0xFF2563EB),
-              fontWeight: FontWeight.bold,
-            ),
+            style: AppTextStyles.bold14(context, color: const Color(0xFF2563EB)),
           ),
         ),
       ],
@@ -260,20 +249,20 @@ class DividerOR extends StatelessWidget {
       children: [
         Expanded(
           child: Divider(
-            color: Colors.white.withValues(alpha: 0.2),
+            color: Colors.white.withOpacity(0.2),
             thickness: 1,
           ),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12.w),
+          padding: EdgeInsets.symmetric(horizontal: 12.w(context)),
           child: Text(
             'OR',
-            style: TextStyle(fontSize: 14.sp, color: Colors.white38),
+            style: AppTextStyles.regular14(context, color: Colors.white38),
           ),
         ),
         Expanded(
           child: Divider(
-            color: Colors.white.withValues(alpha: 0.2),
+            color: Colors.white.withOpacity(0.2),
             thickness: 1,
           ),
         ),
@@ -291,21 +280,21 @@ class SignUpUpperPart extends StatelessWidget {
       children: [
         Image.asset(
           Assets.imagesPngsSignUp,
-          height: 200.h,
+          height: 200.h(context),
           width: double.infinity,
           fit: BoxFit.fill,
         ),
         Positioned(
           bottom: 35,
           left: 50,
-          child: Text('Join the Forge', style: TextStyle(fontSize: 36.sp)),
+          child: Text('Join the Forge', style: AppTextStyles.bold36(context, color: Colors.white)),
         ),
         Positioned(
           bottom: 15,
           left: 15,
           child: Text(
             'Start your transformation journey today.',
-            style: TextStyle(fontSize: 16.sp),
+            style: AppTextStyles.regular16(context, color: Colors.white),
           ),
         ),
       ],

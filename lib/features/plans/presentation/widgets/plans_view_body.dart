@@ -7,7 +7,7 @@ import 'package:fitness_app/features/plans/presentation/view_models/plans_cubit.
 import 'package:fitness_app/features/plans/presentation/widgets/plan_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fitness_app/core/extensions/responsive_extension.dart';
 import 'package:go_router/go_router.dart';
 
 class PlansViewBody extends StatelessWidget {
@@ -22,20 +22,19 @@ class PlansViewBody extends StatelessWidget {
         const SliverToBoxAdapter(child: CustomAppBar()),
         const SliverHeightSpace(height: 24),
         SliverPadding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          padding: EdgeInsets.symmetric(horizontal: 16.w(context)),
           sliver: SliverToBoxAdapter(
             child: Text(
               'Find Your Plan',
               style: AppTextStyles.bold24(context).copyWith(
                 color: context.mainTextColor,
-                fontSize: 30.sp,
               ),
             ),
           ),
         ),
         const SliverHeightSpace(height: 16),
         SliverPadding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          padding: EdgeInsets.symmetric(horizontal: 16.w(context)),
           sliver: BlocBuilder<PlansCubit, PlansState>(
             builder: (context, state) {
               if (state is PlansLoading) {
@@ -48,7 +47,7 @@ class PlansViewBody extends StatelessWidget {
                   delegate: SliverChildBuilderDelegate(
                     (context, index) {
                       return Padding(
-                        padding: EdgeInsets.only(bottom: 16.h),
+                        padding: EdgeInsets.only(bottom: 16.h(context)),
                         child: PlanCard(
                           plan: state.plans[index],
                           onTap: () {
@@ -71,7 +70,7 @@ class PlansViewBody extends StatelessWidget {
             },
           ),
         ),
-        SliverHeightSpace(height: 20.h),
+        SliverHeightSpace(height: 20.h(context)),
       ],
     );
   }

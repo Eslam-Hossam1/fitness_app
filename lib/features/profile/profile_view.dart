@@ -2,14 +2,15 @@ import 'package:fitness_app/core/routing/routes_paths.dart';
 import 'package:fitness_app/core/services/edit_image_profile_servise/get_image_url.dart';
 import 'package:fitness_app/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fitness_app/core/utils/assets.dart';
+import 'package:fitness_app/core/widgets/custom_cached_network_image.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'profile_controller.dart';
 import 'package:fitness_app/core/widgets/buttons/custom_button.dart';
-
-
+import 'package:fitness_app/core/extensions/responsive_extension.dart';
+import 'package:fitness_app/core/theme/app_text_styles.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -36,24 +37,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: const Icon(Icons.arrow_back, color: Colors.white),
-        title: const Text(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => context.pop(),
+        ),
+        title: Text(
           "Profile",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: AppTextStyles.bold22(context, color: Colors.white),
         ),
         centerTitle: true,
-        actions: const [
+        actions: [
           Padding(
-            padding: EdgeInsets.only(right: 16),
-            child: Icon(Icons.settings_outlined, color: Colors.white),
+            padding: EdgeInsets.only(right: 16.w(context)),
+            child: const Icon(Icons.settings_outlined, color: Colors.white),
           ),
         ],
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
         child: Column(
           children: [
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h(context)),
             Column(
               children: [
                 Center(
@@ -67,72 +71,76 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           currentImageUrl = snapshot.data;
                           controller.loadUser();
                           final imageUrl = snapshot.data;
-                          if (imageUrl == null) {
+                          
+                          final double size = 120.r(context);
+
+                          // While waiting for the stream, show a consistent background 
+                          // to avoid flickering to the default image.
+                          if (snapshot.connectionState == ConnectionState.waiting) {
                             return Container(
-                              width: 120,
-                              height: 120,
+                              width: size,
+                              height: size,
                               decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Color(0xff151F29),
                               ),
-                              child: ClipOval(
-                                child: SvgPicture.asset(
-                                  'assets/images/svgs/profile.svg',
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
                             );
                           }
+
                           return Container(
-                            width: 120,
-                            height: 120,
-                            decoration: BoxDecoration(
+                            width: size,
+                            height: size,
+                            decoration: const BoxDecoration(
                               shape: BoxShape.circle,
-                              color: const Color(0xff151F29),
-                              image: DecorationImage(
-                                image: NetworkImage(snapshot.data!),
-                                fit: BoxFit.cover,
-                              ),
+                              color: Color(0xff151F29),
+                            ),
+                            child: ClipOval(
+                              child: imageUrl == null
+                                  ? Image.asset(
+                                      Assets.imagesPngsDefaultProfile,
+                                      fit: BoxFit.cover,
+                                    )
+                                  : CustomCachedNetworkImage(
+                                      url: imageUrl,
+                                      fit: BoxFit.cover,
+                                      // Reverted memCache settings as per user request
+                                    ),
                             ),
                           );
                         },
                       ),
                       Container(
-                        height: 30,
-                        width: 30,
+                        height: 30.r(context),
+                        width: 30.r(context),
                         decoration: const BoxDecoration(
                           color: Color(0xff1877F2),
                           shape: BoxShape.circle,
                         ),
-                        child: const Icon(
+                        child: Icon(
                           Icons.edit,
-                          size: 16,
+                          size: 16.r(context),
                           color: Colors.white,
                         ),
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: 15),
+                SizedBox(height: 15.h(context)),
                 Text(
                   controller.name,
-                  style: const TextStyle(
-                    fontSize: 22,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: AppTextStyles.bold22(context, color: Colors.white),
                 ),
               ],
             ),
 
             Text(
               controller.email,
-              style: TextStyle(color: Colors.grey.shade500, fontSize: 14),
+              style: AppTextStyles.regular14(context, color: Colors.grey.shade500),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h(context)),
             CustomButton(
-              width: 160,
-              height: 56,
+              width: 160.w(context),
+              height: 56.h(context),
               backgroundColor: const Color(0xff1877F2),
               borderRadius: 10,
               onPressed: () async {
@@ -150,53 +158,49 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   });
                 }
               },
-              child: const Text(
+              child: Text(
                 "Edit Profile",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),
+                style: AppTextStyles.bold16(context, color: Colors.white),
               ),
             ),
-            const SizedBox(height: 30),
+            SizedBox(height: 30.h(context)),
             Row(
               children: [
-                _card("Plans\nCompleted", "5", Icons.check_circle_outline),
-                const SizedBox(width: 15),
-                _card("Workout\nHours", "120", Icons.timer_outlined),
+                _card("Plans\nCompleted", "5", Icons.check_circle_outline, context),
+                SizedBox(width: 15.w(context)),
+                _card("Workout\nHours", "120", Icons.timer_outlined, context),
               ],
             ),
-            const SizedBox(height: 30),
-            const Align(
+            SizedBox(height: 30.h(context)),
+            Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 "Account Settings",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: AppTextStyles.bold18(context, color: Colors.white),
               ),
             ),
-            const SizedBox(height: 15),
+            SizedBox(height: 15.h(context)),
             _buildSettingItem(
+              context: context,
               icon: Icons.notifications_none_outlined,
               title: "Notifications",
               iconColor: Colors.blue.shade400,
             ),
             _buildSettingItem(
+              context: context,
               icon: Icons.security_outlined,
               title: "Privacy & Security",
               iconColor: Colors.blue.shade400,
             ),
             _buildSettingItem(
+              context: context,
               icon: Icons.language,
               title: "Language",
               trailing: "English",
               iconColor: Colors.blue.shade400,
             ),
             _buildSettingItem(
+              context: context,
               icon: Icons.logout,
               title: "Sign Out",
               onTap: () async {
@@ -208,42 +212,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
               iconColor: Colors.red.shade400,
               isExit: true,
             ),
-            const SizedBox(height: 30),
+            SizedBox(height: 30.h(context)),
           ],
         ),
       ),
     );
   }
 
-  Widget _card(String title, String value, IconData icon) {
+  Widget _card(String title, String value, IconData icon, BuildContext context) {
     return Expanded(
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(16.r(context)),
         decoration: BoxDecoration(
           color: const Color(0xff151F29),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12.r(context)),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(icon, color: const Color(0xff1877F2), size: 22),
-            const SizedBox(height: 12),
+            Icon(icon, color: const Color(0xff1877F2), size: 22.r(context)),
+            SizedBox(height: 12.h(context)),
             Text(
               title,
-              style: TextStyle(
-                color: Colors.grey.shade400,
-                fontSize: 13,
-                height: 1.2,
-              ),
+              style: AppTextStyles.medium13(context, color: Colors.grey.shade400).copyWith(height: 1.2),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8.h(context)),
             Text(
               value,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+              style: AppTextStyles.bold24(context, color: Colors.white),
             ),
           ],
         ),
@@ -252,6 +248,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget _buildSettingItem({
+    required BuildContext context,
     required IconData icon,
     required String title,
     String? trailing,
@@ -263,26 +260,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
       onTap: onTap,
       contentPadding: const EdgeInsets.symmetric(horizontal: 0),
       leading: Container(
-        padding: const EdgeInsets.all(8),
+        padding: EdgeInsets.all(8.r(context)),
         decoration: BoxDecoration(
           color: const Color(0xff151F29),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r(context)),
         ),
-        child: Icon(icon, color: iconColor, size: 22),
+        child: Icon(icon, color: iconColor, size: 22.r(context)),
       ),
       title: Text(
         title,
-        style: TextStyle(
-          color: isExit ? Colors.red.shade400 : Colors.white,
-          fontSize: 16,
-        ),
+        style: AppTextStyles.regular16(context, color: isExit ? Colors.red.shade400 : Colors.white),
       ),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           if (trailing != null)
-            Text(trailing, style: const TextStyle(color: Colors.grey)),
-          const SizedBox(width: 8),
+            Text(trailing, style: AppTextStyles.regular14(context, color: Colors.grey)),
+          SizedBox(width: 8.w(context)),
           const Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 14),
         ],
       ),

@@ -11,6 +11,8 @@ class CustomCachedNetworkImage extends StatelessWidget {
     this.width,
     this.height,
     this.fit,
+    this.memCacheWidth,
+    this.memCacheHeight,
   });
 
   final String url;
@@ -18,6 +20,9 @@ class CustomCachedNetworkImage extends StatelessWidget {
   final double? width;
   final double? height;
   final BoxFit? fit;
+  final int? memCacheWidth;
+  final int? memCacheHeight;
+
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
@@ -25,6 +30,10 @@ class CustomCachedNetworkImage extends StatelessWidget {
       width: width,
       height: height,
       imageUrl: url,
+      // Adding memCache dimensions significantly improves performance by 
+      // resizing the image during decoding to fit the actual display size.
+      memCacheWidth: memCacheWidth,
+      memCacheHeight: memCacheHeight,
       placeholder: (context, url) =>
           placeHolder ??
           Container(color: context.cachedNetworkImagePlaceholderColor),

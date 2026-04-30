@@ -1,4 +1,3 @@
-
 import 'package:fitness_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -9,22 +8,6 @@ class SplashLogoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          padding: const EdgeInsets.all(24),
-          decoration: BoxDecoration(
-            color: const Color(0xFF17212E),
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.darkPrimary.withValues(alpha: 0.15),
-                blurRadius: 30,
-                spreadRadius: 10,
-              ),
-            ],
-          ),
-          child: const Icon(Icons.fitness_center, color: Colors.white, size: 45),
-        ),
-        const SizedBox(height: 24),
         RichText(
           text: const TextSpan(
             children: [

@@ -3,7 +3,7 @@ import 'package:fitness_app/features/plans/presentation/view_models/plan_details
 import 'package:fitness_app/features/plans/presentation/widgets/plan_details_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fitness_app/core/extensions/responsive_extension.dart';
 
 class PlanDetailsView extends StatelessWidget {
   const PlanDetailsView({super.key, required this.planId});
@@ -17,22 +17,30 @@ class PlanDetailsView extends StatelessWidget {
           PlanDetailsCubit(PlanDetailsRepo())..getPlanDetails(planId),
       child: Scaffold(
         body: const PlanDetailsViewBody(),
-        bottomNavigationBar: Padding(
-          padding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 20.h),
-          child: ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue,
-              minimumSize: const Size(double.infinity, 52),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.r),
+        bottomNavigationBar: Builder(
+          builder: (context) {
+            return Padding(
+              padding: EdgeInsets.only(
+                left: 16.w(context),
+                right: 16.w(context),
+                bottom: 20.h(context),
               ),
-            ),
-            child: const Text(
-              'START WORKOUT',
-              style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1.5),
-            ),
-          ),
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  minimumSize: const Size(double.infinity, 52),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.r(context)),
+                  ),
+                ),
+                child: const Text(
+                  'START WORKOUT',
+                  style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1.5),
+                ),
+              ),
+            );
+          }
         ),
       ),
     );

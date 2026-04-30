@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fitness_app/core/extensions/responsive_extension.dart';
+import 'package:fitness_app/core/theme/app_text_styles.dart';
 
 class Chip extends StatelessWidget {
   const Chip({super.key, required this.label, required this.color});
@@ -10,18 +11,14 @@ class Chip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
+      padding: EdgeInsets.symmetric(horizontal: 10.w(context), vertical: 4.h(context)),
       decoration: BoxDecoration(
         color: color,
-        borderRadius: BorderRadius.circular(6.r),
+        borderRadius: BorderRadius.circular(6.r(context)),
       ),
       child: Text(
         label,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 11.sp,
-          fontWeight: FontWeight.bold,
-        ),
+        style: AppTextStyles.bold10(context, color: Colors.white),
       ),
     );
   }
@@ -42,29 +39,29 @@ class StatItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16.dg),
+      padding: EdgeInsets.all(16.r(context)),
       decoration: BoxDecoration(
         color: const Color(0xFF1E1E2E),
-        borderRadius: BorderRadius.circular(12.r),
+        borderRadius: BorderRadius.circular(12.r(context)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, color: Colors.blue, size: 22.sp),
-          SizedBox(height: 8.h),
+          Icon(icon, color: Colors.blue, size: 22.r(context)),
+          SizedBox(height: 8.h(context)),
           Text(
             label,
-            style: TextStyle(color: Colors.grey, fontSize: 12.sp),
+            style: AppTextStyles.medium12(context, color: Colors.grey),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
-          SizedBox(height: 4.h),
+          SizedBox(height: 4.h(context)),
           FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
               value,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
+              style: AppTextStyles.bold14(context, color: Colors.white),
             ),
           ),
         ],

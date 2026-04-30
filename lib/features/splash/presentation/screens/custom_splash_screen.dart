@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:go_router/go_router.dart';
+
 class SplashScreen extends StatelessWidget {
   final PreferencesService preferencesService;
 
@@ -18,28 +19,27 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print("🏗️ 8. SplashScreen build method started");
-    
 
     return BlocProvider(
       lazy: false,
       create: (context) {
-        print("🛠️ 9. BlocProvider create started. Removing Native Splash..."); 
-        FlutterNativeSplash.remove(); 
-        print("✅ 10. Native Splash removed. Creating SplashCubit..."); 
+        print("🛠️ 9. BlocProvider create started. Removing Native Splash...");
+        FlutterNativeSplash.remove();
+        print("✅ 10. Native Splash removed. Creating SplashCubit...");
         return SplashCubit(preferencesService)..checkStatus();
       },
       child: BlocListener<SplashCubit, SplashState>(
         listener: (context, state) {
-          print("📡 11. BlocListener received state: $state"); 
-          
+          print("📡 11. BlocListener received state: $state");
+
           if (state is SplashNavigateToOnBoarding) {
-            print("➡️ 12. Navigating to /onboarding"); 
+            print("➡️ 12. Navigating to /onboarding");
             context.go(RoutePaths.onboarding);
           } else if (state is SplashNavigateToHome) {
-            print("➡️ 12. Navigating to /home"); 
+            print("➡️ 12. Navigating to /home");
             context.go(RoutePaths.home);
           } else if (state is SplashNavigateToLogin) {
-            print("➡️ 12. Navigating to /login"); 
+            print("➡️ 12. Navigating to /login");
             context.go(RoutePaths.login);
           }
         },
@@ -51,11 +51,36 @@ class SplashScreen extends StatelessWidget {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.40,
+                  height: MediaQuery.of(context).size.height * 0.5,
                   width: double.infinity,
-                  child: const Column(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
+                      Expanded(
+                        child: Center(
+                          child: Container(
+                            padding: const EdgeInsets.all(24),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF17212E),
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: AppColors.darkPrimary.withValues(
+                                    alpha: 0.15,
+                                  ),
+                                  blurRadius: 30,
+                                  spreadRadius: 10,
+                                ),
+                              ],
+                            ),
+                            child: const Icon(
+                              Icons.fitness_center,
+                              color: Colors.white,
+                              size: 45,
+                            ),
+                          ),
+                        ),
+                      ),
                       SplashLogoWidget(),
                       SizedBox(height: 50),
                       SplashProgressBar(),

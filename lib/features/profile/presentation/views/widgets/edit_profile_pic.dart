@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:fitness_app/core/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/assets.dart';
+import 'package:fitness_app/core/widgets/custom_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -76,10 +77,9 @@ class EditProfilePic extends StatelessWidget {
       return Image.file(selectedImage!, fit: BoxFit.cover);
     }
     if (initialImageUrl != null) {
-      return Image.network(
-        initialImageUrl!,
+      return CustomCachedNetworkImage(
+        url: initialImageUrl!,
         fit: BoxFit.cover,
-        errorBuilder: (context, error, stackTrace) => _buildPlaceholder(),
       );
     }
     return _buildPlaceholder();

@@ -1,6 +1,8 @@
 import 'package:fitness_app/features/plans/data/models/plans_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fitness_app/core/extensions/responsive_extension.dart';
+import 'package:fitness_app/core/theme/app_text_styles.dart';
+import 'package:fitness_app/core/widgets/custom_cached_network_image.dart';
 
 class PlanCard extends StatelessWidget {
   const PlanCard({super.key, required this.plan, required this.onTap});
@@ -26,8 +28,8 @@ class PlanCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: Color(0xFF1E1E2E),
-          borderRadius: BorderRadius.circular(16),
+          color: const Color(0xFF1E1E2E),
+          borderRadius: BorderRadius.circular(16.r(context)),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,65 +37,35 @@ class PlanCard extends StatelessWidget {
             Stack(
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-                  child: Image.network(
-                    plan.image,
-                    height: 180,
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(16.r(context))),
+                  child: CustomCachedNetworkImage(
+                    url: plan.image,
+                    height: 180.h(context),
                     width: double.infinity,
                     fit: BoxFit.cover,
-                    loadingBuilder: (context, child, loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return Container(
-                        height: 180,
-                        color: Color(0xFF1E1E2E),
-                        child: Center(
-                          child: CircularProgressIndicator(
-                            value: loadingProgress.expectedTotalBytes != null
-                                ? loadingProgress.cumulativeBytesLoaded /
-                                      loadingProgress.expectedTotalBytes!
-                                : null,
-                          ),
-                        ),
-                      );
-                    },
-                    errorBuilder: (context, error, stackTrace) {
-                      return Container(
-                        height: 180,
-                        color: Color(0xFF1E1E2E),
-                        child: Center(
-                          child: Icon(
-                            Icons.image_not_supported_outlined,
-                            color: Colors.grey,
-                            size: 40,
-                          ),
-                        ),
-                      );
-                    },
+                    // Optimizing memory by matching cache size to display height
+                    memCacheHeight: 180.h(context).toInt(),
                   ),
                 ),
                 Positioned(
-                  top: 12,
-                  right: 12,
+                  top: 12.h(context),
+                  right: 12.w(context),
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    padding: EdgeInsets.symmetric(horizontal: 10.w(context), vertical: 4.h(context)),
                     decoration: BoxDecoration(
                       color: _getLevelColor(plan.level),
-                      borderRadius: BorderRadius.circular(6),
+                      borderRadius: BorderRadius.circular(6.r(context)),
                     ),
                     child: Text(
                       plan.level.toUpperCase(),
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 11,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: AppTextStyles.bold10(context, color: Colors.white),
                     ),
                   ),
                 ),
               ],
             ),
             Padding(
-              padding: EdgeInsets.all(12.dg),
+              padding: EdgeInsets.all(12.r(context)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -105,54 +77,51 @@ class PlanCard extends StatelessWidget {
                           plan.name,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: AppTextStyles.bold18(context, color: Colors.white),
                         ),
                       ),
                       Row(
                         children: [
-                          Icon(Icons.star, size: 14, color: Colors.amber),
-                          SizedBox(width: 2),
+                          const Icon(Icons.star, size: 14, color: Colors.amber),
+                          SizedBox(width: 2.w(context)),
                           Text(
                             plan.rating.toString(),
-                            style: TextStyle(color: Colors.grey, fontSize: 13),
+                            style: AppTextStyles.regular13(context, color: Colors.grey),
                           ),
                         ],
                       ),
                     ],
                   ),
-                  SizedBox(height: 8.h),
+                  SizedBox(height: 8.h(context)),
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.calendar_today_outlined,
                         size: 14,
                         color: Colors.grey,
                       ),
-                      SizedBox(width: 4),
+                      SizedBox(width: 4.w(context)),
                       Text(
                         '${plan.durationWeeks} Weeks',
-                        style: TextStyle(color: Colors.grey, fontSize: 13),
+                        style: AppTextStyles.regular13(context, color: Colors.grey),
                       ),
-                      SizedBox(width: 16),
-                      Icon(
+                      SizedBox(width: 16.w(context)),
+                      const Icon(
                         Icons.access_time_outlined,
                         size: 14,
                         color: Colors.grey,
                       ),
-                      SizedBox(width: 4),
+                      SizedBox(width: 4.w(context)),
                       Text(
                         '${plan.minutesPerDay} Min/Day',
-                        style: TextStyle(color: Colors.grey, fontSize: 13),
+                        style: AppTextStyles.regular13(context, color: Colors.grey),
                       ),
                     ],
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 10.h(context)),
           ],
         ),
       ),

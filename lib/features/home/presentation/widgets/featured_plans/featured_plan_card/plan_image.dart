@@ -8,16 +8,22 @@ class PlanImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = 120.w(context);
+    final height = 140.h(context);
+    
     return ClipRRect(
-      borderRadius: const BorderRadius.only(
-        topLeft: Radius.circular(16),
-        bottomLeft: Radius.circular(16),
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(16.r(context)),
+        bottomLeft: Radius.circular(16.r(context)),
       ),
       child: CustomCachedNetworkImage(
         url: imageUrl,
-        width: 120.w(context),
-        height: 140.h(context),
+        width: width,
+        height: height,
         fit: BoxFit.cover,
+        // Memory optimization: decode image only at the size it's displayed
+        memCacheWidth: width.toInt(),
+        memCacheHeight: height.toInt(),
       ),
     );
   }
