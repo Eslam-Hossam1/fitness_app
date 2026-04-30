@@ -25,7 +25,7 @@ Future<String?> uploadImageToSupabase(File file) async {
       'image_url': imageUrl,
     });
 
-    return imageUrl;
+    return imageUrl;  
   } catch (e) {
     Fluttertoast.showToast(msg: "Upload error $e");
     print('tttttttttttttttttttttttttttttttttttttttttttttttttttt: $e');
