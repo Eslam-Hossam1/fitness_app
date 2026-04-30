@@ -74,6 +74,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           
                           final double size = 120.r(context);
 
+                          // While waiting for the stream, show a consistent background 
+                          // to avoid flickering to the default image.
+                          if (snapshot.connectionState == ConnectionState.waiting) {
+                            return Container(
+                              width: size,
+                              height: size,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xff151F29),
+                              ),
+                            );
+                          }
+
                           return Container(
                             width: size,
                             height: size,
@@ -90,9 +103,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   : CustomCachedNetworkImage(
                                       url: imageUrl,
                                       fit: BoxFit.cover,
-                                      // Optimize memory usage
-                                      memCacheWidth: size.toInt(),
-                                      memCacheHeight: size.toInt(),
+                                      // Reverted memCache settings as per user request
                                     ),
                             ),
                           );
