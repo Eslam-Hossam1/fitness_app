@@ -29,7 +29,7 @@ Iron Pulse is your all-in-one fitness ecosystem designed to push your limits. Wh
 
 ---
 
-## ⚫️ App Screens:
+## ✨ App Screens:
 
 <table>
 <tr>
@@ -76,7 +76,7 @@ Iron Pulse is your all-in-one fitness ecosystem designed to push your limits. Wh
 
 # 🏛️ Architecture & Modularization
 
-Iron Pulse is built following **MVVM Architecture** principles with a strict **feature-first** folder structure. Each feature is fully isolated with its own `domain`, `data`, and `presentation` layers.
+Iron Pulse is built following **MVVM Architecture** principles with a strict **feature-first** folder structure. Each feature is fully isolated with its own `data`, and `presentation` layers.
 
 ```
 lib/
