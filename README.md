@@ -2,24 +2,29 @@
 --------------------------------------------
 
 <p align="center">
- <img 
-  src="assets/images/readme/iron_pulse_banner.png"
-  alt="Iron Pulse Banner"
-  width="100%"
+  <img
+    src="assets/images/readme/iron_pulse_banner.png"
+    alt="Iron Pulse Banner"
+    width="100%"
   />
 </p>
+
+---
 
 ## 🏋️‍♂️ Unleash Your Potential with Iron Pulse ! 🔥✨
 Iron Pulse is your all-in-one fitness ecosystem designed to push your limits. Whether you're a beginner or a pro athlete, Iron Pulse provides the tools you need to track your progress, follow expertly crafted workout plans, and connect with top-tier trainers. 🏃‍♂️💨 From personalized training programs 📋 to real-time performance tracking 📊, we've got everything you need to transform your body and mind! 🌟
 
 **Key Features:**
-- 🎯 **Personalized Plans** — Workout programs tailored to your goals.
-- 🧘‍♂️ **Pro Trainers** — Access to expert guidance and specialized routines.
-- ⭐️ **Favorites** — Curate your own list of preferred exercises and plans.
-- 🌑 **Dark & Light Mode** — Sleek, responsive UI that adapts to your style.
-- 🧩 **Clean Architecture** — Built for scalability and rock-solid performance.
-- 🚀 **Real-time Sync** — Powered by Supabase for a seamless experience.
-- 📱 **Responsive Design** — Pixel-perfect on every screen size.
+- 🔐 **Auth Flow** — Sign up, log in, OTP verification & password reset.
+- 🏠 **Home** — Discover featured plans and quick access to everything.
+- 📋 **Plans** — Browse and view detailed workout plans.
+- 🧑‍🏫 **Trainers** — Find and connect with professional trainers.
+- ❤️ **Favorites** — Save plans you love for quick access.
+- 👤 **Profile** — Manage your account and personal information.
+- 🌓 **Dark & Light Theme** — Switch between modes instantly.
+- 🦴 **Skeleton Loading** — Smooth loading states throughout the app.
+
+---
 
 ## ⚫️ App Screens In Dark mode:
 
@@ -27,42 +32,55 @@ Iron Pulse is your all-in-one fitness ecosystem designed to push your limits. Wh
 
 <table>
 <tr>
-  <td> <img width="200" alt="splash" src="PLACEHOLDER_DARK_SPLASH" /></td>
-  <td><img width="200" alt="onboarding_1" src="PLACEHOLDER_DARK_ONBOARDING_1" /></td>
-  <td><img width="200" alt="onboarding_2" src="PLACEHOLDER_DARK_ONBOARDING_2" /></td>
-  <td><img width="200" alt="onboarding_3" src="PLACEHOLDER_DARK_ONBOARDING_3" /></td>
+  <td><img width="200" alt="Splash Screen" src="PLACEHOLDER_DARK_SPLASH" /></td>
+  <td><img width="200" alt="Onboarding 1" src="PLACEHOLDER_DARK_ONBOARDING_1" /></td>
+  <td><img width="200" alt="Onboarding 2" src="PLACEHOLDER_DARK_ONBOARDING_2" /></td>
+  <td><img width="200" alt="Onboarding 3" src="PLACEHOLDER_DARK_ONBOARDING_3" /></td>
 </tr>
 <tr>
-  <td>Splash Screen</td>
-  <td>Onboarding 1</td>
-  <td>Onboarding 2</td>
-  <td>Onboarding 3</td>
-</tr>
-
-<tr>
-  <td><img width="200" alt="login" src="PLACEHOLDER_DARK_LOGIN" /></td>
-  <td><img width="200" alt="home" src="PLACEHOLDER_DARK_HOME" /></td>
-  <td><img width="200" alt="plans" src="PLACEHOLDER_DARK_PLANS" /></td>
-  <td><img width="200" alt="trainers" src="PLACEHOLDER_DARK_TRAINERS" /></td>
-</tr>
-<tr>
-  <td>Login Screen</td>
-  <td>Home Screen</td>
-  <td>Workout Plans</td>
-  <td>Expert Trainers</td>
+  <td align="center">Splash Screen</td>
+  <td align="center">Onboarding 1</td>
+  <td align="center">Onboarding 2</td>
+  <td align="center">Onboarding 3</td>
 </tr>
 
 <tr>
-  <td><img width="200" alt="plan_details" src="PLACEHOLDER_DARK_PLAN_DETAILS" /></td>
-  <td><img width="200" alt="favorites" src="PLACEHOLDER_DARK_FAVORITES" /></td>
-  <td><img width="200" alt="profile" src="PLACEHOLDER_DARK_PROFILE" /></td>
-  <td><img width="200" alt="settings" src="PLACEHOLDER_DARK_SETTINGS" /></td>
+  <td><img width="200" alt="Login Screen" src="PLACEHOLDER_DARK_LOGIN" /></td>
+  <td><img width="200" alt="Sign Up Screen" src="PLACEHOLDER_DARK_SIGNUP" /></td>
+  <td><img width="200" alt="OTP Screen" src="PLACEHOLDER_DARK_OTP" /></td>
+  <td><img width="200" alt="Forgot Password" src="PLACEHOLDER_DARK_FORGOT_PWD" /></td>
 </tr>
 <tr>
-  <td>Plan Details</td>
-  <td>Favorites</td>
-  <td>Profile</td>
-  <td>Settings</td>
+  <td align="center">Login Screen</td>
+  <td align="center">Sign Up Screen</td>
+  <td align="center">OTP Verification</td>
+  <td align="center">Forgot Password</td>
+</tr>
+
+<tr>
+  <td><img width="200" alt="Home Screen" src="PLACEHOLDER_DARK_HOME" /></td>
+  <td><img width="200" alt="Plans Screen" src="PLACEHOLDER_DARK_PLANS" /></td>
+  <td><img width="200" alt="Plan Details" src="PLACEHOLDER_DARK_PLAN_DETAILS" /></td>
+  <td><img width="200" alt="Trainers Screen" src="PLACEHOLDER_DARK_TRAINERS" /></td>
+</tr>
+<tr>
+  <td align="center">Home Screen</td>
+  <td align="center">Plans Screen</td>
+  <td align="center">Plan Details</td>
+  <td align="center">Trainers Screen</td>
+</tr>
+
+<tr>
+  <td><img width="200" alt="Favorites Screen" src="PLACEHOLDER_DARK_FAVORITES" /></td>
+  <td><img width="200" alt="Profile Screen" src="PLACEHOLDER_DARK_PROFILE" /></td>
+  <td><img width="200" alt="Edit Profile" src="PLACEHOLDER_DARK_EDIT_PROFILE" /></td>
+  <td><img width="200" alt="Theme Selection" src="PLACEHOLDER_DARK_THEME" /></td>
+</tr>
+<tr>
+  <td align="center">Favorites Screen</td>
+  <td align="center">Profile Screen</td>
+  <td align="center">Edit Profile</td>
+  <td align="center">Theme Selection</td>
 </tr>
 </table>
 
@@ -74,109 +92,148 @@ Iron Pulse is your all-in-one fitness ecosystem designed to push your limits. Wh
 
 <table>
 <tr>
-  <td> <img width="200" alt="splash" src="PLACEHOLDER_LIGHT_SPLASH" /></td>
-  <td><img width="200" alt="onboarding_1" src="PLACEHOLDER_LIGHT_ONBOARDING_1" /></td>
-  <td><img width="200" alt="onboarding_2" src="PLACEHOLDER_LIGHT_ONBOARDING_2" /></td>
-  <td><img width="200" alt="onboarding_3" src="PLACEHOLDER_LIGHT_ONBOARDING_3" /></td>
+  <td><img width="200" alt="Splash Screen Light" src="PLACEHOLDER_LIGHT_SPLASH" /></td>
+  <td><img width="200" alt="Onboarding 1 Light" src="PLACEHOLDER_LIGHT_ONBOARDING_1" /></td>
+  <td><img width="200" alt="Onboarding 2 Light" src="PLACEHOLDER_LIGHT_ONBOARDING_2" /></td>
+  <td><img width="200" alt="Onboarding 3 Light" src="PLACEHOLDER_LIGHT_ONBOARDING_3" /></td>
 </tr>
 <tr>
-  <td>Splash Screen</td>
-  <td>Onboarding 1</td>
-  <td>Onboarding 2</td>
-  <td>Onboarding 3</td>
+  <td align="center">Splash Screen</td>
+  <td align="center">Onboarding 1</td>
+  <td align="center">Onboarding 2</td>
+  <td align="center">Onboarding 3</td>
 </tr>
 
 <tr>
-  <td><img width="200" alt="login" src="PLACEHOLDER_LIGHT_LOGIN" /></td>
-  <td><img width="200" alt="home" src="PLACEHOLDER_LIGHT_HOME" /></td>
-  <td><img width="200" alt="plans" src="PLACEHOLDER_LIGHT_PLANS" /></td>
-  <td><img width="200" alt="trainers" src="PLACEHOLDER_LIGHT_TRAINERS" /></td>
+  <td><img width="200" alt="Login Light" src="PLACEHOLDER_LIGHT_LOGIN" /></td>
+  <td><img width="200" alt="Sign Up Light" src="PLACEHOLDER_LIGHT_SIGNUP" /></td>
+  <td><img width="200" alt="Home Light" src="PLACEHOLDER_LIGHT_HOME" /></td>
+  <td><img width="200" alt="Plans Light" src="PLACEHOLDER_LIGHT_PLANS" /></td>
 </tr>
 <tr>
-  <td>Login Screen</td>
-  <td>Home Screen</td>
-  <td>Workout Plans</td>
-  <td>Expert Trainers</td>
+  <td align="center">Login Screen</td>
+  <td align="center">Sign Up Screen</td>
+  <td align="center">Home Screen</td>
+  <td align="center">Plans Screen</td>
 </tr>
 </table>
+
+---
 
 # 🏛️ Architecture & Modularization
 <p align="center">
   <img width="100%" alt="Modular Architecture" src="assets/images/readme/iron_pulse_architecture.png" />
 </p>
 
-## 🏗️ Clean Architecture Principles
+Iron Pulse is built following **Clean Architecture** principles with a strict **feature-first** folder structure. Each feature is fully isolated with its own `domain`, `data`, and `presentation` layers.
 
-Iron Pulse is built with **Clean Architecture**, ensuring a clear separation of concerns, testability, and scalability. The project is divided into feature-based modules, each containing three distinct layers:
+```
+lib/
+├── core/
+│   ├── networking/
+│   ├── errors/
+│   ├── widgets/
+│   ├── theme/
+│   ├── services/
+│   ├── usecases/
+│   ├── enums/
+│   └── entities/
+│
+└── features/
+    ├── auth/
+    ├── home/
+    ├── plans/
+    ├── trainers/
+    ├── favorites/
+    └── profile/
+```
 
-*   **`Domain Layer`**: The pure business logic core (Entities, Repositories Interfaces, Use Cases).
-*   **`Data Layer`**: Implementation of repositories, handling API calls (Supabase) and local storage.
-*   **`Presentation Layer`**: The UI layer using **Cubit** for state management and clean, reusable widgets.
+---
 
-### 🛠️ Tech Stack & Key Libraries
+# 🗺️ App Navigation Flow
 
-We leverage a modern and robust stack to provide the best user experience:
+```mermaid
+flowchart TD
+    A([Launch]) --> B[Splash Screen]
+    B --> C{First time?}
+    C -- Yes --> D[Onboarding]
+    C -- No --> E{Logged in?}
+    D --> E
+    E -- No --> F[Login / Sign Up]
+    F --> G[OTP Verification]
+    F --> H[Forgot Password]
+    H --> I[Reset Password]
+    G --> J
+    E -- Yes --> J
 
-| Category | Technologies & Libraries |
+    J[Main Shell] --> K[🏠 Home]
+    J --> L[📋 Plans]
+    J --> M[🧑‍🏫 Trainers]
+    J --> N[❤️ Favorites]
+    J --> O[👤 Profile]
+
+    K --> P[Plan Details]
+    L --> P
+    O --> Q[Edit Profile]
+    O --> R[Theme Selection]
+```
+
+---
+
+# 🛠️ Tech Stack & Key Libraries
+
+| Category | Technology / Library |
 | :--- | :--- |
-| **Core** | Flutter SDK, Dart |
-| **State Management** | Flutter Bloc (Cubit) |
-| **Backend** | Supabase (Auth, Database, Storage) |
-| **Navigation** | Go Router |
-| **Architecture** | Clean Architecture, Dartz (Either for Error Handling) |
-| **UI Components** | Skeletonizer, Awesome Dialog, Flutter Svg |
-| **Tools** | Get It (DI), Cached Network Image, Secure Storage |
+| **Language** | Dart |
+| **Framework** | Flutter |
+| **Architecture** | Clean Architecture, Feature-First |
+| **State Management** | flutter_bloc (Cubit) |
+| **Navigation** | go_router |
+| **Backend / BaaS** | Supabase |
+| **Dependency Injection** | get_it |
+| **Error Handling** | dartz (Either) |
+| **Local Storage** | flutter_secure_storage, hydrated_bloc |
+| **Image Loading** | cached_network_image |
+| **SVG Support** | flutter_svg |
+| **Splash Screen** | flutter_native_splash |
+| **Skeleton Loading** | skeletonizer |
+| **Dialogs** | awesome_dialog |
+| **Image Picker** | image_picker |
+| **Toast Notifications** | fluttertoast |
+| **Env Variables** | flutter_dotenv |
+| **State Equality** | equatable |
+| **Font** | Lexend |
 
 ---
 
 # 🚀 Getting Started
 
+Follow these steps to clone and run the **Iron Pulse** app on your local machine.
+
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/[YOUR_USERNAME]/IronPulse.git
+git clone https://github.com/Eslam-Hossam1/fitness_app.git
 ```
 
-### 2️⃣ Environment Setup
-Create a `.env` file in the root directory and add your Supabase credentials:
+### 2️⃣ 🔐 Configure Environment Variables
+Create a `.env` file at the project root with the following variables:
 ```env
-SUPABASE_URL=your_supabase_url
+SUPABASE_URL=your_supabase_project_url
 SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
 
-### 3️⃣ Run the Project
+### 3️⃣ Install & Run
 ```bash
 flutter pub get
+dart run flutter_native_splash:create
 flutter run
 ```
 
 ---
 
-# 🧩 Project Structure
-```mermaid
-graph TD
-    subgraph Core
-        C[core/] --> NW[networking]
-        C --> ERR[errors]
-        C --> WDG[shared_widgets]
-        C --> THM[theme]
-    end
-    
-    subgraph Features
-        F[features/] --> ON[onboarding]
-        F --> AU[auth]
-        F --> HM[home]
-        F --> PL[plans]
-        F --> PR[profile]
-    end
-    
-    subgraph Layers
-        PL --> DMN[domain]
-        PL --> DT[data]
-        PL --> PRES[presentation]
-    end
-```
-
 # 👥 Lead Contributors
 - **[Eslam Hossam](https://github.com/Eslam-Hossam1)** - Lead Developer
 
-<br><br>
+---
+
+<p align="center">Made with ❤️ and Flutter 💙</p>
