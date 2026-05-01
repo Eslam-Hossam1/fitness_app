@@ -29,42 +29,27 @@ Iron Pulse is your all-in-one fitness ecosystem designed to push your limits. Wh
 
 ---
 
-## ⚫️ App Screens In Dark mode:
-
-<!-- TO THE USER: Replace the 'src' in the table below with your Dark Mode screenshots after uploading them to GitHub -->
+## ⚫️ App Screens:
 
 <table>
 <tr>
-  <td><img width="200" alt="Splash Screen" src="PLACEHOLDER_DARK_SPLASH" /></td>
-  <td><img width="200" alt="Onboarding 1" src="PLACEHOLDER_DARK_ONBOARDING_1" /></td>
-  <td><img width="200" alt="Onboarding 2" src="PLACEHOLDER_DARK_ONBOARDING_2" /></td>
-  <td><img width="200" alt="Onboarding 3" src="PLACEHOLDER_DARK_ONBOARDING_3" /></td>
+  <td><img width="200" alt="Splash Screen" src="assets/app_screens/splash.png" /></td>
+  <td><img width="200" alt="Onboarding" src="assets/app_screens/onboarding.png" /></td>
+  <td><img width="200" alt="Login Screen" src="assets/app_screens/login.png" /></td>
+  <td><img width="200" alt="Sign Up Screen" src="assets/app_screens/sign%20up.png" /></td>
 </tr>
 <tr>
   <td align="center">Splash Screen</td>
-  <td align="center">Onboarding 1</td>
-  <td align="center">Onboarding 2</td>
-  <td align="center">Onboarding 3</td>
-</tr>
-
-<tr>
-  <td><img width="200" alt="Login Screen" src="PLACEHOLDER_DARK_LOGIN" /></td>
-  <td><img width="200" alt="Sign Up Screen" src="PLACEHOLDER_DARK_SIGNUP" /></td>
-  <td><img width="200" alt="OTP Screen" src="PLACEHOLDER_DARK_OTP" /></td>
-  <td><img width="200" alt="Forgot Password" src="PLACEHOLDER_DARK_FORGOT_PWD" /></td>
-</tr>
-<tr>
+  <td align="center">Onboarding</td>
   <td align="center">Login Screen</td>
   <td align="center">Sign Up Screen</td>
-  <td align="center">OTP Verification</td>
-  <td align="center">Forgot Password</td>
 </tr>
 
 <tr>
-  <td><img width="200" alt="Home Screen" src="PLACEHOLDER_DARK_HOME" /></td>
-  <td><img width="200" alt="Plans Screen" src="PLACEHOLDER_DARK_PLANS" /></td>
-  <td><img width="200" alt="Plan Details" src="PLACEHOLDER_DARK_PLAN_DETAILS" /></td>
-  <td><img width="200" alt="Trainers Screen" src="PLACEHOLDER_DARK_TRAINERS" /></td>
+  <td><img width="200" alt="Home Screen" src="assets/app_screens/home.png" /></td>
+  <td><img width="200" alt="Plans Screen" src="assets/app_screens/plans.png" /></td>
+  <td><img width="200" alt="Plan Details" src="assets/app_screens/plan%20details.png" /></td>
+  <td><img width="200" alt="Trainers Screen" src="assets/app_screens/trainers.png" /></td>
 </tr>
 <tr>
   <td align="center">Home Screen</td>
@@ -74,50 +59,16 @@ Iron Pulse is your all-in-one fitness ecosystem designed to push your limits. Wh
 </tr>
 
 <tr>
-  <td><img width="200" alt="Favorites Screen" src="PLACEHOLDER_DARK_FAVORITES" /></td>
-  <td><img width="200" alt="Profile Screen" src="PLACEHOLDER_DARK_PROFILE" /></td>
-  <td><img width="200" alt="Edit Profile" src="PLACEHOLDER_DARK_EDIT_PROFILE" /></td>
-  <td><img width="200" alt="Theme Selection" src="PLACEHOLDER_DARK_THEME" /></td>
+  <td><img width="200" alt="Favorites Screen" src="assets/app_screens/favorites.png" /></td>
+  <td><img width="200" alt="Favorites Empty" src="assets/app_screens/favorites%20empty.png" /></td>
+  <td><img width="200" alt="Profile Screen" src="assets/app_screens/profile.png" /></td>
+  <td><img width="200" alt="Edit Profile" src="assets/app_screens/edit%20profile.png" /></td>
 </tr>
 <tr>
   <td align="center">Favorites Screen</td>
+  <td align="center">Favorites Empty</td>
   <td align="center">Profile Screen</td>
   <td align="center">Edit Profile</td>
-  <td align="center">Theme Selection</td>
-</tr>
-</table>
-
----
-
-## ⚪️ App Screens In Light mode:
-
-<!-- TO THE USER: Replace the 'src' in the table below with your Light Mode screenshots after uploading them to GitHub -->
-
-<table>
-<tr>
-  <td><img width="200" alt="Splash Screen Light" src="PLACEHOLDER_LIGHT_SPLASH" /></td>
-  <td><img width="200" alt="Onboarding 1 Light" src="PLACEHOLDER_LIGHT_ONBOARDING_1" /></td>
-  <td><img width="200" alt="Onboarding 2 Light" src="PLACEHOLDER_LIGHT_ONBOARDING_2" /></td>
-  <td><img width="200" alt="Onboarding 3 Light" src="PLACEHOLDER_LIGHT_ONBOARDING_3" /></td>
-</tr>
-<tr>
-  <td align="center">Splash Screen</td>
-  <td align="center">Onboarding 1</td>
-  <td align="center">Onboarding 2</td>
-  <td align="center">Onboarding 3</td>
-</tr>
-
-<tr>
-  <td><img width="200" alt="Login Light" src="PLACEHOLDER_LIGHT_LOGIN" /></td>
-  <td><img width="200" alt="Sign Up Light" src="PLACEHOLDER_LIGHT_SIGNUP" /></td>
-  <td><img width="200" alt="Home Light" src="PLACEHOLDER_LIGHT_HOME" /></td>
-  <td><img width="200" alt="Plans Light" src="PLACEHOLDER_LIGHT_PLANS" /></td>
-</tr>
-<tr>
-  <td align="center">Login Screen</td>
-  <td align="center">Sign Up Screen</td>
-  <td align="center">Home Screen</td>
-  <td align="center">Plans Screen</td>
 </tr>
 </table>
 
@@ -127,6 +78,7 @@ Iron Pulse is your all-in-one fitness ecosystem designed to push your limits. Wh
 <p align="center">
   <img width="100%" alt="Modular Architecture" src="assets/images/readme/iron_pulse_architecture.png" />
 </p>
+
 
 Iron Pulse is built following **Clean Architecture** principles with a strict **feature-first** folder structure. Each feature is fully isolated with its own `domain`, `data`, and `presentation` layers.
 

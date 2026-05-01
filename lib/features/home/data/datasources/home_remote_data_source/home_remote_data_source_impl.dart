@@ -11,7 +11,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
         .from('plans')
         .select('*, steps:plan_steps(*)')
         .eq('is_featured', true)
-        .order('id');
+        .order('id',ascending: true);
     log('featured plans data: ${data.toString()}');
     return (data as List)
         .map((e) => FeaturedPlan.fromJson(e as Map<String, dynamic>))
