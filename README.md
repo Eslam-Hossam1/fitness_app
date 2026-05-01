@@ -2,27 +2,30 @@
 --------------------------------------------
 
 <p align="center">
-  <img
-    src="assets/images/readme/iron_pulse_banner.png"
-    alt="Iron Pulse Banner"
-    width="100%"
-  />
+<img width="1376" height="768" alt="iron pulse banner" src="https://github.com/user-attachments/assets/a266720e-d933-4f7a-a20d-738e34adb206" />
 </p>
 
 ---
 
 ## 🏋️‍♂️ Unleash Your Potential with Iron Pulse ! 🔥✨
-Iron Pulse is your all-in-one fitness ecosystem designed to push your limits. Whether you're a beginner or a pro athlete, Iron Pulse provides the tools you need to track your progress, follow expertly crafted workout plans, and connect with top-tier trainers. 🏃‍♂️💨 From personalized training programs 📋 to real-time performance tracking 📊, we've got everything you need to transform your body and mind! 🌟
+Iron Pulse is your all-in-one fitness ecosystem designed to push your limits. Whether you're a beginner or a pro athlete, Iron Pulse provides the tools you need to track your progress, follow expertly crafted workout plans, and connect with top-tier trainers. 🏃‍♂️ From personalized training programs 📋 to real-time performance tracking 📊, we've got everything you need to transform your body and mind! 🌟
+
+[![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev)
+[![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev)
+[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com)
+[![BLoC](https://img.shields.io/badge/BLoC-FF6F00?style=for-the-badge&logo=flutter&logoColor=white)](https://bloclibrary.dev)
+
 
 **Key Features:**
-- 🔐 **Auth Flow** — Sign up, log in, OTP verification & password reset.
-- 🏠 **Home** — Discover featured plans and quick access to everything.
-- 📋 **Plans** — Browse and view detailed workout plans.
-- 🧑‍🏫 **Trainers** — Find and connect with professional trainers.
-- ❤️ **Favorites** — Save plans you love for quick access.
-- 👤 **Profile** — Manage your account and personal information.
-- 🌓 **Dark & Light Theme** — Switch between modes instantly.
-- 🦴 **Skeleton Loading** — Smooth loading states throughout the app.
+- ✨ **Onboarding** – Welcome & onboarding flow
+- 🎨 **Splash Screen** – App launch screen
+- 🔐 **Authentication** – Login & Sign-up
+- 🏠 **Home** – Discover featured plans and quick access to everything.
+- 📋 **Plans** – View available fitness plans.
+- 📄 **Plan Details** – View full details of a selected plan
+- 💪 **Trainers** – Browse trainers.
+- ❤️ **Favorites** – Save plans you love for quick access.
+- 👤 **Profile** – Manage your account and personal information.
 
 ---
 
@@ -135,11 +138,15 @@ lib/
 │   ├── widgets/
 │   ├── theme/
 │   ├── services/
-│   ├── usecases/
-│   ├── enums/
-│   └── entities/
+│   ├── helpers/
+│   ├── extensions/
+│   └── errors/
+│   └── utils/
+│   └── config/
 │
 └── features/
+    ├── onboarding/
+    ├── splash/
     ├── auth/
     ├── home/
     ├── plans/
@@ -168,7 +175,7 @@ flowchart TD
 
     J[Main Shell] --> K[🏠 Home]
     J --> L[📋 Plans]
-    J --> M[🧑‍🏫 Trainers]
+    J --> M[💪 Trainers]
     J --> N[❤️ Favorites]
     J --> O[👤 Profile]
 
@@ -206,34 +213,51 @@ flowchart TD
 
 ---
 
-# 🚀 Getting Started
+## 👥 Team
 
-Follow these steps to clone and run the **Iron Pulse** app on your local machine.
-
-### 1️⃣ Clone the Repository
-```bash
-git clone https://github.com/Eslam-Hossam1/fitness_app.git
-```
-
-### 2️⃣ 🔐 Configure Environment Variables
-Create a `.env` file at the project root with the following variables:
-```env
-SUPABASE_URL=your_supabase_project_url
-SUPABASE_ANON_KEY=your_supabase_anon_key
-```
-
-### 3️⃣ Install & Run
-```bash
-flutter pub get
-dart run flutter_native_splash:create
-flutter run
-```
+<table>
+  <tr>
+    <td align="center">
+      <b>Khaled Mohammad</b><br/>
+      <sub>Flutter Developer</sub><br/><br/>
+      <a href="https://www.linkedin.com/in/khaled-m-b02494218">
+        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white"/>
+      </a>
+    </td>
+    <td align="center">
+      <b>Eslam Hossam</b><br/>
+      <sub>Flutter Developer</sub><br/>
+      <sub>Team Leader</sub><br/><br/>
+            <a href="https://www.linkedin.com/in/eslam-hossamm/">
+        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white"/>
+    </td>
+    <td align="center">
+      <b>Mohammad Ashraf</b><br/>
+      <sub>Flutter Developer</sub><br/><br/>
+       <a href="https://www.linkedin.com/">
+        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white"/>
+    </td>
+    <td align="center">
+      <b>Yousef Samy</b><br/>
+      <sub>Flutter Developer</sub><br/><br/>
+                  <a href="https://www.linkedin.com/in/yousef-samy-348778252/">
+        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white"/>
+    </td>
+    <td align="center">
+      <b>Mohra George</b><br/>
+      <sub>Flutter Developer</sub><br/><br/>
+                  <a href="https://www.linkedin.com/in/mohraeel-george-418519302/">
+        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white"/>
+    </td>
+  </tr>
+</table>
 
 ---
 
-# 👥 Lead Contributors
-- **[Eslam Hossam](https://github.com/Eslam-Hossam1)** - Lead Developer
+<div align="center">
 
----
+**⚡ Built with passion. Powered by Flutter.**
 
-<p align="center">Made with ❤️ and Flutter 💙</p>
+*IronPulse — Feel The Energy*
+
+</div>
